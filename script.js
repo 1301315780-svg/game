@@ -1,11 +1,11 @@
 console.log("Script started");
-
+    let currentSize = 50
 //Start the game
 function start() {
-    createSquare(50, "red");
-    createSquare(40, "orange");
-    createSquare(70, "green");
-    createSquare(100, "blue");
+    createSquare(50, "maroon");
+    createSquare(40, "lime");
+    createSquare(60, "gold");
+    createSquare(100, "aquamarine");
     console.log(Math.random() * 1000);
     console.log(Math.random() + 1000);
 }
@@ -23,6 +23,8 @@ function createSquare(size, color) {
     square.style.top = getRandomY() + "px";
     square.style.position = "absolute";
     square.style.left = getRandomX() + "px";
+    square.style. borderRadius = "100px";
+    setInterval(updateTimer, 1000);
 
     // Add it to the page
     
@@ -46,11 +48,24 @@ function getRandomY() {
     return ranY;
 }
 
+function updateTimer() {
+    let timer = document.getElementById("timer");
+    timeLeft = timeLeft -1;
+    timer.innerText * timeLeft + "s";
+    if (timeLeft <= 0) {
+        alert("Game over");
+    }
+}
+
 // Handle the player clicking a square
 
 function handleclick(event) {
     let square = event.target;
-    console.log(square);
+    console.log(square.style.width);
     square.remove();
-    // Make a size pattern
+    if (square.style.width == 50 + "px") {
+        console.log("first square");
+        square.remove();
+        currentSize = currentSize + 10;
+    }
 }
